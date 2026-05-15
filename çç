@@ -1,0 +1,534 @@
+projeto-rpg/
+│
+├── backend/
+│   ├── app.py
+│   ├── database.py
+│   ├── models/
+│   │   ├── usuario.py
+│   │   ├── aluno.py
+│   │   ├── batalha.py
+│   │   └── cartas.py
+│   │
+│   └── routes/
+│       ├── auth.py
+│       ├── alunos.py
+│       ├── batalha.py
+│       └── mochila.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── batalha.html
+│   ├── dashboard.html
+│   ├── mochila.html
+│   │
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── login.css
+│   │   ├── batalha.css
+│   │   └── menu.css
+│   │
+│   ├── js/
+│   │   ├── login.js
+│   │   ├── batalha.js
+│   │   ├── radar.js
+│   │   └── menu.js
+│   │
+│   └── assets/
+│       ├── imagens/
+│       └── icons/
+│
+└── README.md
+
+V2
+
+projeto-rpg/
+│
+├── backend/
+│ ├── app.py
+│ ├── database.py
+│ ├── models/
+│ ├── routes/
+│ └── uploads/
+│ ├── perfis/
+│ └── cartas/
+│
+├── frontend/
+│ ├── index.html
+│ ├── dashboard.html
+│ ├── perfil.html
+│ ├── batalha.html
+│ ├── mochila.html
+│ ├── deck.html
+│ │
+│ ├── css/
+│ ├── js/
+│ └── assets/
+│
+└── README.md
+
+
+
+-----------------------------------------------------------------------
+
+Sistema de login com cadastro --------- Daqui para baixo HTML: "COLOCAR TUDO EM PORTUGUES" < !DOCTYPE html > < html lang= "en" > < cabeçalho > < meta charset= "UTF-8" > <title> Formulário Flip Sign - in / Login | @ coding.stella </title> < link rel= 'stylesheet' href= 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' > < link rel= "stylesheet" href= "./style.css" > </head>​​< corpo > < div class = "container" id= "container" > < div class = "form-container sign-up-container" > < form action= "#" > <h1> Criar conta </h1>​​​< div class = "social-container" > <a href="#" class="social"> < i class = " fab fa - facebook - f " > </i> </a> <a href="#" class="social"> < i class = " fab fa-google - plus - g " > </i> </a> <a href="#" class="social"> < i class = " fab fa - linkedin - in " > </i> </a> </div>​​<span> ou utilize seu e - mail para se cadastrar </span> < input type= "text" placeholder= "Nome" / > < input type= "email" placeholder= "Email" / > < input type= "password" placeholder= "Senha" / > <button> Inscreva - se </button>​​</form>​​</div>​​< div class = "form-container sign-in-container" > < form action= "#" > <h1> Entrar </h1>​​​​​< div class = "social-container" > <a href="#" class="social"> < i class = " fab fa - facebook - f " > </i> </a> <a href="#" class="social"> < i class = " fab fa-google - plus - g " > </i> </a> <a href="#" class="social"> < i class = " fab fa - linkedin - in " > </i> </a> </div>​​<span> ou utilize sua conta </span>​< input type= "email" placeholder= "Email" / > < input type= "password" placeholder= "Senha" / > <a href="#"> Esqueceu sua senha ? </a>​​<button> Entrar </button>​​​​​</form>​​</div>​​< div class = "overlay-container" > < div class = "overlay" > < div class = "overlay-panel overlay-left" > <h1> Bem - vindo de volta! </h1> <p> Para se manter conectado conosco, faça login com suas informações pessoais </p> < button class = "ghost" id = " signIn " > Entrar </button> </div>​​< div class = "overlay-panel overlay-right" > <h1> Olá , amigo ! </h1>​<p> Insira seus dados pessoais e comece sua jornada conosco </p> < button class = " ghost" id= "signUp" > Cadastre- se </button> </div>​​</div>​​</div>​​</div>​​< script src= </body>​​</html> CSS: @import url ( 'https://fonts.googleapis.com/css?family=Montserrat:400,800' ) ; * { box-sized: caixa com borda; } corpo { fundo: #f6f5f7; Exibir: flexível; justificar-conteúdo: centralizado; alinhamento-itens: centro; flex-direction: coluna; família-da-fonte: 'Montserrat' , sem serifa; altura: 100vh; margem: -20px 0 50px; } h1 { peso da fonte: negrito; margem: 0 ; } h2 { alinhamento do texto: centralizado;Design responsivo para web } p { tamanho da fonte: 14px; peso da fonte: 100 ; altura da linha: 20px; espaçamento entre letras: 0,5 px; margem: 20px 0 30px; } span { tamanho da fonte: 12px; } um { cor: #333; tamanho da fonte: 14px; decoração de texto: nenhuma; margem: 15px 0 ; } botão { raio da borda: 20px;Programação borda: 1px sólida #FF4B2B; cor de fundo: #FF4B2B; cor: #FFFFFF; tamanho da fonte: 12px; peso da fonte: negrito; preenchimento: 12px 45px; espaçamento entre letras: 1px; text-transform: maiúsculas; transição: transformar 80ms ease- in ; } botão:ativo { transformar: escala ( 0,95 ) ; } botão:foco { Esboço: nenhum; } botão. fantasma { cor de fundo: transparente;E-book de animações CSS cor da borda: #FFFFFF; } forma { cor de fundo: #FFFFFF; Exibir: flexível; alinhamento-itens: centro; justificar-conteúdo: centralizado; flex-direction: coluna; preenchimento: 0 50px; altura: 100 %; alinhamento do texto: centralizado; } entrada { cor de fundo: #eee; fronteira: nenhuma; preenchimento: 12px 15px; margem: 8px 0 ; largura: 100 %; } .container { cor de fundo: #fff; raio da borda: 10px;Quadrinhos e animação box-shadow: 0 14px 28px rgba ( 0 , 0 , 0 , 0.25 ) , 0 10px 10px rgba ( 0 , 0 , 0 , 0.22 ) ; posição: relativa; overflow: oculto; largura: 768px; largura-máxima: 100 %; altura mínima: 480px; } .form-container { posição: absoluta; topo: 0 ; altura: 100 %; transição: todos os 0,6 s de entrada e saída suaves; } .sign- in -container { esquerda: 0 ; largura: 50 %; Índice z: 2 ; } .container. right -panel-active .sign- in -container { transformar: traduzirX ( 100 % ) ; } .sign-up-container { esquerda: 0 ; largura: 50 %; opacidade: 0 ; Índice z: 1 ; } .container. right -panel-active .sign-up-container { transformar: traduzirX ( 100 % ) ; opacidade: 1 ; Índice z: 5 ; animação: mostrar 0,6 s; } @keyframes mostrar { 0 %, 49,99 % { opacidade: 0 ; Índice z: 1 ; } 50 %, 100 % { opacidade: 1 ; Índice z: 5 ; } } .overlay-container { posição: absoluta;Linguagens de script topo: 0 ; esquerda: 50 %; largura: 50 %; altura: 100 %; overflow: oculto; transição: transformar 0,6 s suavização de entrada e saída; Índice z: 100 ; } .container. right -panel-active .overlay-container { transformar: traduzirX ( -100 % ) ; } .sobreposição { fundo: #FF416C; fundo: -webkit-linear- gradiente ( para a direita, #FF4B2B, #FF416C); fundo: gradiente linear ( para a direita, #FF4B2B, #FF416C); background-repeat: no-repeat;Quadrinhos e animação tamanho de fundo: capa; background-position: 0 0 ; cor: #FFFFFF; posição: relativa; esquerda: -100 %; altura: 100 %; largura: 200 %; transformar: traduzirX ( 0 ) ; transição: transformar 0,6 s suavização de entrada e saída; } .container. right -panel-active .overlay { transformar: traduzirX ( 50 % ) ; } .overlay-panel { posição: absoluta; Exibir: flexível; alinhamento-itens: centro; justificar-conteúdo: centralizado; flex-direction: coluna; preenchimento: 0 40px; alinhamento do texto: centralizado; topo: 0 ; altura: 100 %; largura: 50 %; transformar: traduzirX ( 0 ) ; transição: transformar 0,6 s suavização de entrada e saída; } .overlay-left { transformar: traduzirX ( -20 % ) ; } .container.right - panel-active .overlay-left { transformar: traduzirX ( 0 ) ; } .overlay-right { direita: 0 ; transformar: traduzirX ( 0 ) ; } .container.right- panel -active .overlay-right { transformar: traduzirX ( 20 % ) ; } .social-container { margem: 20px 0 ; } .social-container a { borda: 1px sólida #DDDDDD; raio-da-borda: 50 %; exibição: inline-flex; justificar-conteúdo: centralizado; alinhamento-itens: centro; margem: 0 5px; altura: 40px; largura: 40px; } JavaScript: const signUpButton = document.getElementById('signUp'); const signInButton = document.getElementById('signIn'); const container = document.getElementById('container'); signUpButton.addEventListener('click', () => { container.classList.add("right-panel-active"); }); signInButton.addEventListener('click', () => { container.classList.remove("right-panel-active"); }); --------------------- Daqui para cima No sistema de batalhas para saber se e sua vez usamos o --------------------- Daqui para baixp HTML: <!DOCTYPE html> <html lang="en" > <head> <meta charset="UTF-8"> <title>CodePen - Rock Paper Scissors Game</title> <link rel="stylesheet" href="./style.css"> </head> <body> <!-- partial:index.partial.html --> <section class="container"> <div class="result_field"> <div class="result_images"> <span class="user_result"> <img src="https://codingstella.com/wp-content/uploads/2024/01/download.png" alt="Rock Image" /> </span> <span class="cpu_result"> <img src="https://codingstella.com/wp-content/uploads/2024/01/download.png" alt="Rock Image" /> </span> </div> <div class="result">Let's Play!!</div> </div> <div class="option_images"> <span class="option_image"> <img src="https://codingstella.com/wp-content/uploads/2024/01/download.png" alt="Rock Image" /> <p>Rock</p> </span> <span class="option_image"> <img src="https://codingstella.com/wp-content/uploads/2024/01/download-1.png" alt="Paper Image" /> <p>Paper</p> </span> <span class="option_image"> <img src="https://codingstella.com/wp-content/uploads/2024/01/download-2.png" alt="Scissors Image" /> <p>Scissors</p> </span> </div> </section> <!-- partial --> <script src="./script.js"></script> </body> </html> CSS: /* Import Google font - Poppins */ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; } body { height: 100vh; display: flex; align-items: center; justify-content: center; background: #14171e; } ::selection { color: #fff; background-color: #000; } .container { padding: 2rem 7rem; border-radius: 10px; background: #fff; box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1); } .result_images { display: flex; column-gap: 7rem; } .container.start .user_result { transform-origin: left; animation: userShake 0.7s ease infinite; } @keyframes userShake { 50% { transform: rotate(10deg); } } .container.start .cpu_result { transform-origin: right; animation: cpuShake 0.7s ease infinite; } @keyframes cpuShake { 50% { transform: rotate(-10deg); } } .result_images img { width: 100px; } .user_result img { transform: rotate(90deg); } .cpu_result img { transform: rotate(-90deg) rotateY(180deg); } .result { text-align: center; font-size: 2rem; color: #de0d64; margin-top: 1.5rem; } .option_image img { width: 50px; } .option_images { display: flex; align-items: center; margin-top: 2.5rem; justify-content: space-between; } .container.start .option_images { pointer-events: none; } .option_image { display: flex; flex-direction: column; align-items: center; opacity: 0.5; cursor: pointer; transition: opacity 0.3s ease; } .option_image:hover { opacity: 1; } .option_image.active { opacity: 1; } .option_image img { pointer-events: none; } .option_image p { color: #3477eb; font-size: 1.235rem; margin-top: 1rem; pointer-events: none; } JavaScript: // Get to DOM elements const gameContainer = document.querySelector(".container"), userResult = document.querySelector(".user_result img"), cpuResult = document.querySelector(".cpu_result img"), result = document.querySelector(".result"), optionImages = document.querySelectorAll(".option_image"); // Loop through each option image element optionImages.forEach((image, index) => { image.addEventListener("click", (e) => { image.classList.add("active"); userResult.src = cpuResult.src = "https://codingstella.com/wp-content/uploads/2024/01/download.png"; result.textContent = "Wait..."; // Loop through each option image again optionImages.forEach((image2, index2) => { // If the current index doesn't match the clicked index // Remove the "active" class from the other option images index !== index2 && image2.classList.remove("active"); }); gameContainer.classList.add("start"); // Set a timeout to delay the result calculation let time = setTimeout(() => { gameContainer.classList.remove("start"); // Get the source of the clicked option image let imageSrc = e.target.querySelector("img").src; // Set the user image to the clicked option image userResult.src = imageSrc; // Generate a random number between 0 and 2 let randomNumber = Math.floor(Math.random() * 3); // Create an array of CPU image options let cpuImages = [ "https://codingstella.com/wp-content/uploads/2024/01/download.png", "https://codingstella.com/wp-content/uploads/2024/01/download-1.png", "https://codingstella.com/wp-content/uploads/2024/01/download-2.png" ]; // Set the CPU image to a random option from the array cpuResult.src = cpuImages[randomNumber]; // Assign a letter value to the CPU option (R for rock, P for paper, S for scissors) let cpuValue = ["R", "P", "S"][randomNumber]; // Assign a letter value to the clicked option (based on index) let userValue = ["R", "P", "S"][index]; // Create an object with all possible outcomes let outcomes = { RR: "Draw", RP: "Cpu", RS: "User", PP: "Draw", PR: "User", PS: "Cpu", SS: "Draw", SR: "Cpu", SP: "User" }; // Look up the outcome value based on user and CPU options let outComeValue = outcomes[userValue + cpuValue]; // Display the result result.textContent = userValue === cpuValue ? "Match Draw" : ${outComeValue} Won!!; }, 2500); }); }); ------------ daqui para cima tabela + grafico de radar para cada aluno 30 pts ao todo 5 em cada area Salve de cartas na mochila. Sistema de navegação para o jogo com o sistema abaixo --------- Daqui pra baixo ----------------- HTML: < !DOCTYPE html > < html lang= "en" > < cabeçalho > < meta charset= "UTF-8" > <title> Pop - ups de ícones de mídias sociais | @ coding.stella </title> < link rel= "stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >< link rel= "stylesheet" href= "./style.css" > </head>​​< corpo > < ! -- partial : index.partial.html -- > < ul class = "wrapper" > < li class = "ícone do Cartas Do Deck" > < span class = " tooltip " > Cartas Do Deck </span> <span> < i class = " fab fa - Cartas Do Deck-f" > </i> </span> </li>​​< li class = "ícone do Mochila" > < span class = " tooltip " > Mochila </span> < span >< i class = "fab fa-x-Mochila" >< / i >< / span > </li>​​< li class = "ícone do Campo de Batalha" > < span class = " tooltip " > Campo de Batalha </span> < span >< i class = "fab fa - Campo de Batalha" >< /i >< / span > </li>​​</ul>​​< !-- parcial -- > </body>​​</html> ---- CSS: "EDITE O CSS DE ACORDO COM O HTML" @import url ( "https://fonts.googleapis.com/css2?family=Poppins&display=swap" ) ; * { margem: 0 ; preenchimento: 0 ; box-sized: caixa com borda; } *:foco, *:ativo { esboço: nenhum !importante; -webkit-tap-highlight-color: transparente; } html, corpo { Exibir: flexível; justificar-conteúdo: centralizado; alinhamento-itens: centro; altura mínima: 100vh; largura mínima: 100vw; margem: 0 ; família de fontes: "Poppins" , sem serifa; fundo: gradiente linear ( 315deg, #ffffff, #d7e1ec); } .wrapper { exibição: inline-flex; estilo de lista: nenhum; preenchimento: 0 ; } .wrapper .icon { posição: relativa; fundo: #ffffff; raio-da-borda: 50 %; preenchimento: 15px; margem: 10px; largura: 50px; altura: 50px; tamanho da fonte: 18px; Exibir: flexível; justificar-conteúdo: centralizado; alinhamento-itens: centro; flex-direction: coluna; box-shadow: 0 10px 10px rgba ( 0 , 0 , 0 , 0.1 ) ; cursor: ponteiro; transição: todos 0,2 s cúbico- bezier ( 0,68 , -0,55 , 0,265 , 1,55 ) ; } .wrapper .tooltip { posição: absoluta; topo: 0 ; tamanho da fonte: 14px; fundo: #ffffff; cor: #ffffff; preenchimento: 5px 8px; raio da borda: 5px; box-shadow: 0 10px 10px rgba ( 0 , 0 , 0 , 0.1 ) ; opacidade: 0 ; eventos-ponteiro: nenhum; transição: todos 0,3 s cúbico- bezier ( 0,68 , -0,55 , 0,265 , 1,55 ) ; } .wrapper .tooltip::before { posição: absoluta; contente: "" ; altura: 8px; largura: 8px; fundo: #ffffff; inferior: -3px; esquerda: 50 %; transformar: transladar ( -50 % ) rotacionar ( 45 graus ) ; transição: todos 0,3 s cúbico- bezier ( 0,68 , -0,55 , 0,265 , 1,55 ) ; } .wrapper .icon:hover .tooltip { topo: -45px; opacidade: 1 ; visibilidade: visível; eventos-ponteiro: automático; } .wrapper .icon:hover span, .wrapper .icon:hover .tooltip { text-shadow: 0px -1px 0px rgba ( 0 , 0 , 0 , 0.1 ) ; } .wrapper .facebook:hover, .wrapper .facebook:hover .tooltip, .wrapper .facebook:hover .tooltip::before { fundo: #1877f2; cor: #ffffff; } .wrapper .twitter:hover, .wrapper .twitter:hover .tooltip, .wrapper .twitter:hover .tooltip::before { fundo: #222222; cor: #ffffff; } .wrapper .instagram:hover, .wrapper .instagram:hover .tooltip, .wrapper .instagram:hover .tooltip::before { fundo: #e4405f; cor: #ffffff; } .wrapper .github:hover, .wrapper .github:hover .tooltip, .wrapper .github:hover .tooltip::before { fundo: #833ab4; cor: #ffffff; } .wrapper .youtube:hover, .wrapper .youtube:hover .tooltip, .wrapper .youtube:hover .tooltip::before { fundo: #cd201f; cor: #ffffff; } -------------- Daqui para cima ------------- 1 - 🧠 Conhecimento - 5 (Linguagens() + Naturais() + Humanas() + Exatas() + Raciocínio lógico() = ) 2 - 💪 Mente - 5 (Coragem() + Força de vontade() + Liderança() + Força física() + Velocidade() = ) 3 - 🏃‍♂️ Corpo - 5 () 4 - 💬 Comunicação - 5 (Sociabilidade() + Bagagem cultural() + Tecnologia() + Cidadania() + Criatividade() = ) 5 - 😊 Emoção - 5 (Paciência() + Inteligência emocional() + Empatia() + Consciência() + Sinceridade() = ) 6 - ❤️ Afetividade - 5 (Caráter() + Respeito() + Disciplina() + Responsabilidade() + Personalidade() = )
+
+
+
+---------
+
+
+Crie um sistema web completo de RPG educacional gamificado utilizando:
+
+* Python (Flask)
+* HTML5
+* CSS3
+* JavaScript
+* SQLite
+* SQLAlchemy
+* Chart.js
+
+O sistema deve ser totalmente em português, moderno, responsivo e com salvamento completo de dados, imagens e contas dos usuários.
+
+# 🎮 Objetivo do Sistema
+
+O projeto será um jogo educacional onde os alunos criam cartas personalizadas utilizando:
+
+* foto do aluno
+* foto de qualquer pessoa
+* atributos personalizados
+* distribuição de pontos
+* gráfico radar em tempo real
+
+As cartas criadas serão usadas em:
+
+* batalhas
+* rankings
+* evolução
+* coleção de cartas
+
+O sistema deve salvar:
+
+* login
+* cadastro
+* imagens enviadas
+* cartas criadas
+* atributos
+* batalhas
+* mochila
+* progresso do aluno
+
+Tudo deve permanecer salvo no banco de dados e nas pastas do projeto.
+
+---
+
+# 🔐 Sistema Completo de Login e Cadastro
+
+Criar sistema funcional com:
+
+## Cadastro
+
+Campos:
+
+* nome
+* email
+* senha
+* confirmar senha
+* foto de perfil opcional
+
+## Login
+
+Campos:
+
+* email
+* senha
+
+## Funcionalidades
+
+* sessão de usuário
+* logout
+* autenticação
+* proteção de rotas
+* senha criptografada
+* lembrar usuário logado
+* validação de email
+* validação de senha
+
+Salvar tudo no SQLite.
+
+---
+
+# 🖼️ Sistema de Upload de Imagens
+
+O sistema deve permitir:
+
+* upload da foto do aluno
+* upload de imagem da carta
+* trocar foto depois
+* salvar imagens no projeto
+
+## Requisitos
+
+Criar pasta:
+uploads/
+
+Separar:
+uploads/perfis/
+uploads/cartas/
+
+Salvar:
+
+* nome do arquivo
+* caminho da imagem
+* usuário dono da imagem
+
+As imagens devem:
+
+* aparecer automaticamente nas cartas
+* aparecer no perfil
+* permanecer salvas após reiniciar o sistema
+
+Aceitar:
+
+* JPG
+* PNG
+* JPEG
+* WEBP
+
+Adicionar:
+
+* pré-visualização da imagem
+* limite de tamanho
+* validação de arquivo
+
+---
+
+# 🃏 Sistema de Criação de Cartas
+
+Cada aluno poderá criar várias cartas.
+
+Cada carta deve possuir:
+
+* nome da carta
+* imagem personalizada
+* dono da carta
+* raridade
+* poder total
+* atributos
+* nível
+* energia
+* descrição
+
+---
+
+# 📊 Sistema de Distribuição de Pontos
+
+Cada carta terá:
+
+30 pontos totais.
+
+Máximo:
+5 pontos por área.
+
+## Áreas do Radar
+
+### 🧠 Conhecimento
+
+### 💪 Mente
+
+### 🏃 Corpo
+
+### 💬 Comunicação
+
+### 😊 Emoção
+
+### ❤️ Afetividade
+
+---
+
+# 📈 Gráfico Radar em Tempo Real
+
+Utilizar Chart.js.
+
+O gráfico deve:
+
+* atualizar automaticamente
+* mudar ao clicar nos botões "+"
+* diminuir ao clicar nos botões "-"
+* mostrar animações suaves
+* possuir visual gamer neon
+
+---
+
+# 🎮 Sistema de Pontos
+
+Criar interface contendo:
+
+Conhecimento: 3/5
+[ - ] [ + ]
+
+Mostrar:
+
+* pontos restantes
+* total usado
+* força total da carta
+
+Bloquear:
+
+* acima de 5
+* acima de 30 pontos totais
+
+---
+
+# 🃏 Sistema Visual da Carta
+
+A carta deve mostrar:
+
+* foto do aluno
+* imagem enviada
+* nome
+* nível
+* raridade
+* atributos
+* gráfico radar
+* poder total
+* moldura especial
+
+---
+
+# 🌈 Sistema de Raridade
+
+Calcular automaticamente:
+
+* 0–10 → Comum
+* 11–18 → Rara
+* 19–24 → Épica
+* 25–30 → Lendária
+
+Alterar:
+
+* cor da carta
+* brilho
+* efeitos visuais
+
+---
+
+# 🎒 Sistema de Mochila
+
+Criar inventário contendo:
+
+* cartas salvas
+* filtros
+* pesquisa
+* categorias
+* edição de cartas
+* exclusão de cartas
+
+As cartas devem permanecer salvas no banco.
+
+---
+
+# ⚔️ Sistema de Batalha
+
+Criar batalhas em turnos.
+
+Cada carta deve utilizar:
+
+* seus atributos
+* energia
+* velocidade
+* resistência
+
+O sistema deve:
+
+* mostrar de quem é a vez
+* barras de vida
+* animações
+* ataques especiais
+* resultado da batalha
+
+---
+
+# 🏆 Ranking
+
+Criar ranking baseado em:
+
+* vitórias
+* nível
+* poder
+* XP
+
+---
+
+# 🐍 Backend Flask
+
+Criar backend organizado contendo:
+
+## Rotas
+
+* login
+* cadastro
+* upload
+* cartas
+* batalha
+* ranking
+* mochila
+
+## Recursos
+
+* Flask
+* SQLAlchemy
+* SQLite
+* sessões
+* autenticação
+* API REST
+
+---
+
+# 💾 Banco de Dados
+
+Criar tabelas:
+
+## usuarios
+
+* id
+* nome
+* email
+* senha
+* foto_perfil
+
+## cartas
+
+* id
+* usuario_id
+* nome
+* imagem
+* conhecimento
+* mente
+* corpo
+* comunicação
+* emoção
+* afetividade
+* raridade
+* poder_total
+* nivel
+
+## batalhas
+
+* id
+* vencedor
+* perdedor
+* data
+
+---
+
+# 📂 Organização do Projeto
+
+projeto-rpg/
+│
+├── backend/
+│   ├── app.py
+│   ├── database.py
+│   ├── models/
+│   ├── routes/
+│   └── uploads/
+│       ├── perfis/
+│       └── cartas/
+│
+├── frontend/
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── perfil.html
+│   ├── batalha.html
+│   ├── mochila.html
+│   ├── deck.html
+│   │
+│   ├── css/
+│   ├── js/
+│   └── assets/
+│
+└── README.md
+
+---
+
+# 🎨 Estilo Visual
+
+Visual:
+
+* futurista
+* gamer
+* neon
+* glassmorphism
+
+Paleta:
+
+* preto
+* azul neon
+* roxo
+* rosa neon
+
+Adicionar:
+
+* hover animado
+* sombras
+* brilho neon
+* partículas
+* transições suaves
+
+---
+
+# 📱 Responsividade
+
+Funcionar em:
+
+* celular
+* tablet
+* desktop
+
+---
+
+# 🔒 Segurança
+
+Adicionar:
+
+* criptografia de senha
+* validação de upload
+* proteção de rotas
+* sessão segura
+* tratamento de erros
+
+---
+
+# 🚀 Extras
+
+Adicionar:
+
+* sistema de XP
+* níveis
+* conquistas
+* evolução das cartas
+* multiplayer futuramente
+* tela de carregamento
+* sons
+* animações avançadas
+
+---
+
+# 📦 Resultado Esperado
+
+Gerar:
+
+* sistema completo funcional
+* backend Flask completo
+* upload funcional
+* login persistente
+* imagens salvas
+* SQLite funcionando
+* frontend moderno
+* radar em tempo real
+* sistema de cartas
+* mochila
+*alhas
+* ranking
+* código limpo
+* comentários explicativos
+* estrutura profissional bat

@@ -1,0 +1,556 @@
+/**
+ * 🎮 CARDS GAME - CSS Principal
+ * Design: Neon Futurista | Glassmorphism | Gamer
+ * Paleta: Preto | Azul Neon | Roxo | Rosa Neon
+ * Efeitos: Partículas | Animações | Hover | Sombras | Brilho
+ */
+
+/* ==================== VARIÁVEIS CSS ==================== */
+:root {
+    --cor-preto: #0a0e27;
+    --cor-preto-suave: #0f1535;
+    --cor-azul-neon: #00d4ff;
+    --cor-roxo: #7c3aed;
+    --cor-rosa-neon: #ff006e;
+    --cor-branco: #ffffff;
+    --cor-branco-suave: #f0f0f0;
+    
+    /* Sombras */
+    --sombra-neon: 0 0 20px rgba(0, 212, 255, 0.5);
+    --sombra-roxo: 0 0 20px rgba(124, 58, 237, 0.5);
+    --sombra-rosa: 0 0 20px rgba(255, 0, 110, 0.5);
+    
+    /* Transições */
+    --transicao: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transicao-rapida: all 0.2s ease-out;
+}
+
+/* ==================== RESET E BASE ==================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-preto-suave) 50%, #1a0933 100%);
+    color: var(--cor-branco);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ==================== PARTÍCULAS ==================== */
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--cor-azul-neon);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: floatParticle var(--duration) linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* ==================== FUNDO COM GRADIENTE ANIMADO ==================== */
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, var(--cor-preto), var(--cor-roxo), var(--cor-azul-neon), var(--cor-preto));
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==================== TIPOGRAFIA ==================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    background: linear-gradient(135deg, var(--cor-azul-neon), var(--cor-rosa-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    color: var(--cor-azul-neon);
+    text-shadow: var(--sombra-neon);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ==================== BOTÕES ==================== */
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicao);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--cor-azul-neon), var(--cor-roxo));
+    color: var(--cor-preto);
+    box-shadow: var(--sombra-neon), 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-neon), 0 0 30px rgba(124, 58, 237, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(124, 58, 237, 0.2);
+    color: var(--cor-roxo);
+    border: 2px solid var(--cor-roxo);
+    box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(124, 58, 237, 0.3);
+    box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.3), 0 0 20px var(--sombra-roxo);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--cor-rosa-neon), #ff4040);
+    color: var(--cor-branco);
+    box-shadow: var(--sombra-rosa);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-rosa), 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+/* ==================== CARDS GLASSMORPHISM ==================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: var(--transicao);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2), 0 0 20px var(--sombra-neon);
+    transform: translateY(-5px);
+}
+
+.card-carta {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(0, 212, 255, 0.1));
+    border: 2px solid var(--cor-azul-neon);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-carta::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(50%, 50%) rotate(360deg); }
+}
+
+.card-carta:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 20px var(--sombra-neon), inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+/* ==================== INPUTS ==================== */
+
+input, textarea, select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--cor-branco);
+    font-size: 1rem;
+    transition: var(--transicao-rapida);
+    font-family: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cor-azul-neon);
+    box-shadow: 0 0 15px var(--sombra-neon);
+}
+
+/* ==================== LOADING ==================== */
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--cor-preto), var(--cor-preto-suave));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader {
+    text-align: center;
+}
+
+.neon-box {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--cor-azul-neon);
+    border-radius: 8px;
+    display: inline-block;
+    margin: 10px;
+    animation: boxPulse 1.5s infinite;
+    box-shadow: 0 0 20px var(--sombra-neon);
+}
+
+.neon-box:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.neon-box:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes boxPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loading-text {
+    margin-top: 20px;
+    color: var(--cor-azul-neon);
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+    text-shadow: 0 0 20px var(--sombra-neon);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ==================== NOTIFICAÇÕES ==================== */
+
+.notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--cor-azul-neon);
+    max-width: 300px;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+    box-shadow: 0 0 20px var(--sombra-neon);
+}
+
+.notificacao.erro {
+    color: var(--cor-rosa-neon);
+    border-color: rgba(255, 0, 110, 0.3);
+    box-shadow: 0 0 20px var(--sombra-rosa);
+}
+
+.notificacao.sucesso {
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ==================== CONTAINER ==================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 24px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+@media (max-width: 768px) {
+    :root {
+        --transicao: all 0.25s ease-out;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .notificacao {
+        right: 10px;
+        left: 10px;
+        max-width: 100%;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ==================== UTILITÁRIOS ==================== */
+
+.text-center {
+    text-align: center;
+}
+
+.text-glow {
+    text-shadow: 0 0 20px var(--cor-azul-neon);
+}
+
+.neon-border {
+    border: 2px solid var(--cor-azul-neon);
+    box-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flex {
+    display: flex;
+    gap: 16px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.margin-top {
+    margin-top: 24px;
+}
+
+.margin-bottom {
+    margin-bottom: 24px;
+}
+
+.scroll-area {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Scrollbar customizado */
+.scroll-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 10px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+    background: var(--cor-azul-neon);
+    border-radius: 10px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb:hover {
+    background: var(--cor-roxo);
+}

@@ -1,0 +1,482 @@
+/**
+ * 🎮 CARDS GAME - CSS Batalha
+ * Interface de combate PvP com animações
+ */
+
+.batalha-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+.batalha-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.batalha-arena {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(124, 58, 237, 0.05));
+    border: 2px solid var(--cor-azul-neon);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.batalha-jogador {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    text-align: center;
+}
+
+.jogador-info {
+    margin-bottom: 16px;
+}
+
+.jogador-nome {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    margin-bottom: 8px;
+}
+
+.jogador-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.jogador-stat {
+    padding: 8px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.jogador-stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.jogador-stat-valor {
+    color: var(--cor-azul-neon);
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.vida-bar {
+    margin: 16px 0;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.vida-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00dd88);
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 0 10px #00ff88;
+}
+
+.vida-fill.dano {
+    animation: danoAnimation 0.6s ease-out;
+}
+
+@keyframes danoAnimation {
+    0% { background: linear-gradient(90deg, #ff4040, #ff2020); }
+    50% { transform: scaleX(1.02); }
+    100% { background: linear-gradient(90deg, #00ff88, #00dd88); }
+}
+
+.cartas-mao {
+    margin-top: 16px;
+}
+
+.cartas-mao-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.cartas-mao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.carta-mao {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+    border: 2px solid var(--cor-azul-neon);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: var(--transicao);
+    position: relative;
+    overflow: hidden;
+}
+
+.carta-mao:hover:not(.disabled) {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 20px var(--sombra-neon);
+}
+
+.carta-mao.selected {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.3), 0 0 20px var(--sombra-neon);
+}
+
+.carta-mao.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carta-mao-emoji {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.carta-mao-nome {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cor-azul-neon);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.carta-mao-poder {
+    font-size: 0.9rem;
+    color: var(--cor-rosa-neon);
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.vs-separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+}
+
+.vs-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-rosa-neon);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+}
+
+/* ==================== RODADAS ==================== */
+
+.rodadas-container {
+    margin-bottom: 32px;
+}
+
+.rodadas-titulo {
+    font-size: 1.2rem;
+    color: var(--cor-azul-neon);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.rodadas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.rodada-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: var(--transicao);
+}
+
+.rodada-card.completa {
+    border-color: var(--cor-azul-neon);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.rodada-numero {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.rodada-resultado {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.rodada-poder {
+    padding: 8px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.rodada-poder.vencedora {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+    color: #00ff88;
+}
+
+/* ==================== BOTÕES DE AÇÃO ==================== */
+
+.batalha-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.btn-batalha {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--cor-azul-neon), var(--cor-roxo));
+    color: var(--cor-preto);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transicao);
+    box-shadow: 0 0 20px var(--sombra-neon);
+}
+
+.btn-batalha:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--sombra-neon), 0 0 60px rgba(124, 58, 237, 0.4);
+}
+
+.btn-batalha:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-batalha.secundario {
+    background: rgba(124, 58, 237, 0.2);
+    color: var(--cor-roxo);
+    border: 2px solid var(--cor-roxo);
+}
+
+/* ==================== RESULTADO DA BATALHA ==================== */
+
+.batalha-resultado {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+    border: 2px solid var(--cor-azul-neon);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 0 30px var(--sombra-neon);
+}
+
+.resultado-status {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.resultado-vitoria {
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+}
+
+.resultado-derrota {
+    color: var(--cor-rosa-neon);
+    text-shadow: 0 0 20px var(--sombra-rosa);
+}
+
+.resultado-empate {
+    color: var(--cor-azul-neon);
+    text-shadow: 0 0 20px var(--sombra-neon);
+}
+
+.resultado-descricao {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+}
+
+.resultado-recompensas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.recompensa-item {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.recompensa-icone {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.recompensa-tipo {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+.recompensa-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    margin-top: 4px;
+}
+
+/* ==================== ANIMAÇÕES DE ATAQUE ==================== */
+
+.ataque-animacao {
+    animation: ataqueAnimacao 0.6s ease-out;
+}
+
+@keyframes ataqueAnimacao {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.impacto {
+    animation: impacto 0.4s ease-out;
+}
+
+@keyframes impacto {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+@media (max-width: 768px) {
+    .batalha-arena {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .vs-separator {
+        grid-column: 1;
+        margin: 16px 0;
+    }
+
+    .cartas-mao-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .batalha-actions {
+        gap: 12px;
+    }
+
+    .btn-batalha {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .batalha-resultado {
+        padding: 24px;
+    }
+
+    .resultado-status {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .batalha-container {
+        padding: 12px;
+    }
+
+    .batalha-arena {
+        padding: 12px;
+    }
+
+    .jogador-info {
+        margin-bottom: 12px;
+    }
+
+    .jogador-nome {
+        font-size: 1rem;
+    }
+
+    .jogador-stats {
+        gap: 8px;
+    }
+
+    .cartas-mao-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .carta-mao {
+        padding: 8px;
+    }
+
+    .carta-mao-emoji {
+        font-size: 1.5rem;
+    }
+
+    .rodadas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .rodada-numero {
+        font-size: 1.5rem;
+    }
+
+    .resultado-recompensas {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .btn-batalha {
+        width: 100%;
+        padding: 12px;
+    }
+}

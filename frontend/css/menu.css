@@ -1,0 +1,512 @@
+/**
+ * 🎮 CARDS GAME - CSS Menu/Dashboard
+ * Interface principal do jogo
+ */
+
+.menu-header {
+    background: rgba(15, 21, 53, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--cor-azul-neon);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.menu-header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    text-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.menu-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--cor-azul-neon);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: var(--transicao-rapida);
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 15px var(--sombra-neon);
+    transform: translateY(-2px);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cor-azul-neon), var(--cor-rosa-neon));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--cor-branco);
+    font-size: 0.9rem;
+}
+
+.dashboard {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: rgba(124, 58, 237, 0.1);
+    border: 2px solid var(--cor-roxo);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: var(--transicao);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+    background: rgba(124, 58, 237, 0.15);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    text-shadow: 0 0 15px var(--sombra-neon);
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.tab:hover {
+    color: var(--cor-azul-neon);
+}
+
+.tab.active {
+    color: var(--cor-azul-neon);
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--cor-azul-neon);
+    box-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== MOCHILAS/CARTAS ==================== */
+
+.cartas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.carta-item {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+    border: 2px solid var(--cor-azul-neon);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transicao);
+    position: relative;
+    overflow: hidden;
+}
+
+.carta-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.carta-item:hover::before {
+    left: 100%;
+}
+
+.carta-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 0 30px var(--sombra-neon), inset 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.carta-imagem {
+    width: 100%;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.carta-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carta-nome {
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px var(--sombra-neon);
+}
+
+.carta-raridade {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    border: 1px solid;
+}
+
+.carta-raridade.comum {
+    background: rgba(100, 150, 200, 0.2);
+    border-color: #6496c8;
+    color: #6496c8;
+}
+
+.carta-raridade.raro {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: var(--cor-roxo);
+    color: var(--cor-roxo);
+}
+
+.carta-raridade.epico {
+    background: rgba(255, 100, 0, 0.2);
+    border-color: #ff6400;
+    color: #ff6400;
+}
+
+.carta-raridade.lendario {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.carta-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
+    font-size: 0.85rem;
+}
+
+.stat-poder {
+    color: var(--cor-rosa-neon);
+}
+
+.stat-evolucao {
+    color: var(--cor-azul-neon);
+}
+
+/* ==================== RANKING ==================== */
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.ranking-table thead {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.ranking-table th {
+    padding: 16px;
+    text-align: left;
+    color: var(--cor-azul-neon);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+}
+
+.ranking-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.ranking-table tbody tr:hover {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.ranking-posicao {
+    font-weight: 700;
+    color: var(--cor-azul-neon);
+    min-width: 40px;
+}
+
+.ranking-posicao.top1 {
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.ranking-posicao.top2 {
+    color: #c0c0c0;
+    font-size: 1.1rem;
+}
+
+.ranking-posicao.top3 {
+    color: #cd7f32;
+    font-size: 1.05rem;
+}
+
+.ranking-nome {
+    font-weight: 600;
+    color: var(--cor-branco);
+}
+
+.ranking-valor {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==================== MODAL ==================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background: rgba(15, 21, 53, 0.9);
+    border: 2px solid var(--cor-azul-neon);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 40px var(--sombra-neon);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--cor-azul-neon);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--cor-rosa-neon);
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+@media (max-width: 768px) {
+    .menu-header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-nav {
+        width: 100%;
+    }
+
+    .stats-bar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cartas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .ranking-table {
+        font-size: 0.9rem;
+    }
+
+    .ranking-table th, .ranking-table td {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-header-content {
+        padding: 8px 12px;
+    }
+
+    .menu-logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .cartas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+        padding: 20px;
+        border-width: 1px;
+    }
+
+    .tabs {
+        gap: 4px;
+    }
+
+    .tab {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+}
